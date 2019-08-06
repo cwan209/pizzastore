@@ -25,9 +25,6 @@ public class Topping {
     private double unitPrice;
 
     @Column
-    private String size;
-
-    @Column
     private String imageUrl;
 
     @OneToMany(mappedBy = "topping")
