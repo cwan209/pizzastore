@@ -20,6 +20,36 @@ public class PizzaOrder {
     private long id;
 
     @Column
+    private String customerName;
+
+    @Column
+    private String mobile;
+
+    @Column
+    private String unitNo;
+
+    @Column
+    private String streetNo;
+
+    @Column
+    private String streetName;
+
+    @Column
+    private String suburb;
+
+    @Column
+    private String state;
+
+    @Column
+    private String postCode;
+
+    @Column
+    private double totalPrice;
+
+    @Column
+    private String status;
+
+    @Column
     @CreationTimestamp
     private Date createdAt;
 
