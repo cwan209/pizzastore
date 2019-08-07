@@ -26,10 +26,10 @@ public class PizzaOrder {
     private String mobile;
 
     @Column
-    private String unitNo;
+    private int unitNo;
 
     @Column
-    private String streetNo;
+    private int streetNo;
 
     @Column
     private String streetName;
@@ -41,7 +41,7 @@ public class PizzaOrder {
     private String state;
 
     @Column
-    private String postCode;
+    private String postcode;
 
     @Column
     private double totalPrice;
