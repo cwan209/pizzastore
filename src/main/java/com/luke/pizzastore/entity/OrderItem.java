@@ -34,7 +34,7 @@ public class OrderItem {
     @Column(name = "pizza_type_id")
     private long pizzaType;
 
-    @OneToMany(mappedBy = "orderItem")
+    @OneToMany(mappedBy = "orderItem", cascade = CascadeType.ALL)
     private List<OrderItemTopping> orderItemToppings;
 
     @Column

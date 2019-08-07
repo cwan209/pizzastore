@@ -62,6 +62,7 @@ public class PizzaOrderService {
 
                 Topping topping = toppingRepository.findById(toppingDTO.getToppingId()).get();
                 orderItemTopping.setUnitPrice(topping.getUnitPrice());
+                orderItemTopping.setOrderItem(orderItem);
 
                 orderItemToppings.add(orderItemTopping);
             });

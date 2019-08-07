@@ -61,6 +61,6 @@ public class PizzaOrder {
     @UpdateTimestamp
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 }
