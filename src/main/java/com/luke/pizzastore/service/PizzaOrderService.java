@@ -23,15 +23,16 @@ public class PizzaOrderService {
     ToppingRepository toppingRepository;
 
     public void createOrder(PizzaOrderDTO pizzaOrderDTO) {
-        List<OrderItem> orderItems = getOrderItems(pizzaOrderDTO);
-        PizzaOrder pizzaOrder = getPizzaOrder(pizzaOrderDTO, orderItems);
+        PizzaOrder pizzaOrder = new PizzaOrder();
+
+        List<OrderItem> orderItems = getOrderItems(pizzaOrderDTO, pizzaOrder);
+
+        this.processOrder(pizzaOrderDTO, pizzaOrder, orderItems);
 
         pizzaOrderRepository.save(pizzaOrder);
     }
 
-    private PizzaOrder getPizzaOrder(PizzaOrderDTO pizzaOrderDTO, List<OrderItem> orderItems) {
-        PizzaOrder pizzaOrder = new PizzaOrder();
-
+    private void processOrder(PizzaOrderDTO pizzaOrderDTO, PizzaOrder pizzaOrder, List<OrderItem> orderItems) {
         pizzaOrder.setMobile(pizzaOrderDTO.getContact().getMobile());
         pizzaOrder.setCustomerName(pizzaOrderDTO.getContact().getCustomerName());
 
@@ -42,10 +43,9 @@ public class PizzaOrderService {
         pizzaOrder.setSuburb(pizzaOrderDTO.getAddress().getSuburb());
 
         pizzaOrder.setOrderItems(orderItems);
-        return pizzaOrder;
     }
 
-    private List<OrderItem> getOrderItems(PizzaOrderDTO pizzaOrderDTO) {
+    private List<OrderItem> getOrderItems(PizzaOrderDTO pizzaOrderDTO, PizzaOrder pizzaOrder) {
         List<OrderItem> orderItems = new ArrayList<>();
 
         pizzaOrderDTO.getOrderItems().forEach( orderItemDTO -> {
@@ -68,6 +68,7 @@ public class PizzaOrderService {
             });
 
             orderItem.setOrderItemToppings(orderItemToppings);
+            orderItem.setOrder(pizzaOrder);
             orderItems.add(orderItem);
         });
 
