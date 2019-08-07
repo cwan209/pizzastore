@@ -33,6 +33,7 @@ public class PizzaType {
     @OneToMany(mappedBy = "pizzaType")
     private Set<PizzaIngredient> pizzaIngredients;
 
-    @OneToMany(mappedBy = "pizzaType")
-    private Set<OrderItem> orderItems;
+    // many to many
+//    @OneToMany(mappedBy = "pizzaType")
+//    private Set<OrderItem> orderItems;
 }

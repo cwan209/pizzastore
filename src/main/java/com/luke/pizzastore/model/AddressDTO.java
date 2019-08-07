@@ -1,4 +1,4 @@
-package com.luke.pizzastore.request;
+package com.luke.pizzastore.model;
 
 import lombok.Data;
 
@@ -7,17 +7,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 
 @Data
-public class PizzaOrderRequest {
-
-    @NotBlank(message = "Please provide a name")
-    private String customerName;
-
-    @NotBlank(message = "Please provide a mobile number")
-    @Pattern(
-        regexp="[\\d]+",
-        message = "Please provide a mobile number"
-    )
-    private String mobile;
+public class AddressDTO {
 
     @Positive(message = "Please provide a valid unit number")
     private int unitNo;
@@ -35,8 +25,8 @@ public class PizzaOrderRequest {
     private String state;
 
     @Pattern(
-        regexp="[\\d]+",
-        message = "Please provide a valid postcode"
+            regexp="[\\d]+",
+            message = "Please provide a valid postcode"
     )
     private String postcode;
 }

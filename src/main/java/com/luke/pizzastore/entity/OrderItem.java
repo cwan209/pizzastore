@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,12 +31,11 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private PizzaOrder order;
 
-    @ManyToOne
-    @JoinColumn(name = "pizza_type_id")
-    private PizzaType pizzaType;
+    @Column(name = "pizza_type_id")
+    private long pizzaType;
 
     @OneToMany(mappedBy = "orderItem")
-    private Set<OrderItemTopping> orderItemToppings;
+    private List<OrderItemTopping> orderItemToppings;
 
     @Column
     private int amount;
@@ -45,5 +45,4 @@ public class OrderItem {
 
     @Column
     private String size;
-
 }

@@ -1,5 +1,7 @@
 package com.luke.pizzastore.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,15 +10,17 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
+@Builder
+@AllArgsConstructor
 public class OrderItemTopping {
 
     @Id
     @GeneratedValue
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "topping_id", nullable = false)
-    private Topping topping;
+//    @ManyToOne
+    @Column(name = "topping_id", nullable = false)
+    private long topping;
 
     @ManyToOne
     @JoinColumn(name = "order_item_id", nullable = false)
@@ -26,5 +30,5 @@ public class OrderItemTopping {
     private int amount;
 
     @Column
-    private int unitPrice;
+    private double unitPrice;
 }

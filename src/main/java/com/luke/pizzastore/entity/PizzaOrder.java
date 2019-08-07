@@ -1,5 +1,7 @@
 package com.luke.pizzastore.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +15,8 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class PizzaOrder {
 
     @Id
@@ -58,5 +62,5 @@ public class PizzaOrder {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "order")
-    private Set<OrderItem> orderItems;
+    private List<OrderItem> orderItems;
 }
